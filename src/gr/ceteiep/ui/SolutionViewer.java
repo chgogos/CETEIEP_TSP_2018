@@ -63,7 +63,7 @@ public class SolutionViewer {
 					if (i == array.length)
 						break;
 				}
-				if (s.equalsIgnoreCase("TOUR_SECTION"))
+				if (s.trim().equalsIgnoreCase("TOUR_SECTION"))
 					f = true;
 			}
 			br.close();

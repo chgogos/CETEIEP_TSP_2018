@@ -58,7 +58,8 @@ public class TextUI {
 
 	void menu() {
 		System.out.println("1. List of all EUC_2D problems");
-		System.out.println("2. Load eil51 and display optimal solution");
+//		System.out.println("2. Load eil51 and display optimal solution");
+		System.out.println("2. Load gr9882 and display optimal solution");
 		System.out.println("3. Solve using moea framework");
 		getEUC2DFiles();
 		System.out.print("Enter choice: ");
@@ -66,8 +67,10 @@ public class TextUI {
 		int choice = in.nextInt();
 		if (choice == 1)
 			scenario1();
-		else if (choice == 2)
-			scenario2();
+		else if (choice == 2) {
+//			scenario2("eil51", ".//data//tsp//eil51.opt.tour");
+			scenario2("gr9882", ".//data//tsp//gr9882.opt.tour");
+		}
 		else if (choice == 3)
 			scenario3();
 		else
@@ -83,12 +86,12 @@ public class TextUI {
 		}
 	}
 
-	void scenario2() {
+	void scenario2(String tsp, String solution_full_path_name) {
 		try {
-			TSPInstance instance = new TSPInstance(tspMap.get("eil51"));
+			TSPInstance instance = new TSPInstance(tspMap.get(tsp));
 			System.out.printf("%s %s %d\n", instance.getName(), instance.getComment(), instance.getDimension());
 			SolutionViewer solutionviewer = new SolutionViewer(instance);
-			solutionviewer.displaySolution(".//data//tsp//eil51.opt.tour");
+			solutionviewer.displaySolution(solution_full_path_name);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
